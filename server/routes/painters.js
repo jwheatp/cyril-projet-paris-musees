@@ -32,4 +32,19 @@ router.get("/:id", async (req, res, next) => {
 	res.json(painter);
 });
 
+router.get("/:id/paintings", async (req, res, next) => {
+	const painterID = parseInt(req.params.id);
+	let paintings;
+	try {
+		paintings = await prisma.paintings.findMany({
+			where: {
+				painterId: painterID,
+			},
+		});
+	} catch (err) {
+		return next(err);
+	}
+	res.json(paintings);
+});
+
 export default router;
