@@ -65,4 +65,23 @@ router.get("/random", async (req, res, next) => {
 	res.json(randomPainters);
 });
 
+// get 1 random painting from a painter
+
+router.get("/:id/painting/random", async (req, res, next) => {
+	const painterID = parseInt(req.params.id);
+	let paintings;
+	try {
+		paintings = await prisma.paintings.findMany({
+			where: {
+				painterId: painterID,
+			},
+		});
+	} catch (err) {
+		return next(err);
+	}
+	const randomPainting =
+		paintings[Math.floor(Math.random() * paintings.length)];
+	res.json(randomPainting);
+});
+
 export default router;
