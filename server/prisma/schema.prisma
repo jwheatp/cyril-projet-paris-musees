@@ -18,10 +18,10 @@ model Painters {
     picture        String?
     picture_credit String?
     wikipedia_link String?
-    paintings      Painting[]
+    paintings      Paintings[]
 }
 
-model Painting {
+model Paintings {
     id         Int      @id @default(autoincrement())
     paintingId String   @unique
     image      String?
