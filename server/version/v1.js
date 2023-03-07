@@ -1,10 +1,12 @@
 import express from "express";
 
 import paintings from "../routes/paintings.js";
+import painters from "../routes/painters.js";
 
 const router = express.Router();
 
 router.use("/paintings", paintings);
+router.use("/painters", painters);
 
 router.use((err, req, res, next) => {
 	if (err.name === "UnauthorizedError") {
