@@ -17,4 +17,19 @@ router.get("/", async (req, res, next) => {
 	res.json(paintings);
 });
 
+router.get("/:id", async (req, res, next) => {
+	const painterID = parseInt(req.params.id);
+	let painter;
+	try {
+		painter = await prisma.painters.findUnique({
+			where: {
+				id: painterID,
+			},
+		});
+	} catch (err) {
+		return next(err);
+	}
+	res.json(painter);
+});
+
 export default router;
