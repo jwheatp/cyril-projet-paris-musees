@@ -50,9 +50,9 @@ router.get("/:id/paintings", async (req, res, next) => {
 // create route for choose 4 random painters
 
 router.get("/random", async (req, res, next) => {
-	let paintings;
+	let painters;
 	try {
-		paintings = await prisma.painters.findMany();
+		painters = await prisma.painters.findMany();
 	} catch (err) {
 		return next(err);
 	}
