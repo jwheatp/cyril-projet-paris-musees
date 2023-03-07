@@ -11,6 +11,10 @@ router.use((err, req, res, next) => {
 		return res.status(401).json({ msg: "Ton JWT est invalide !" });
 	}
 
+	if (err.status === undefined) {
+		err.status = 500;
+	}
+
 	return res.status(err.status).json({ error: err.message });
 });
 
