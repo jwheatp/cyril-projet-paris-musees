@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 router.get("/", async (req, res, next) => {
 	let paintings;
 	try {
-		paintings = await prisma.painting.findMany();
+		paintings = await prisma.paintings.findMany();
 	} catch (err) {
 		return next(err);
 	}
@@ -62,7 +62,7 @@ router.get("/:id", async (req, res, next) => {
 			},
 		});
 
-		const painting = await prisma.painting.update({
+		const painting = await prisma.paintings.update({
 			where: {
 				paintingId: PaintingObject.paintingId,
 			},
@@ -78,19 +78,5 @@ router.get("/:id", async (req, res, next) => {
 		return next(err);
 	}
 });
-
-// router.get("/artist/:id", async (req, res, next) => {
-// 	let paintings;
-// 	try {
-// 		paintings = await fetchAPI(
-// 			getPaintings(req.params.id),
-// 			process.env.API_AUTH_TOKEN
-// 		);
-
-// 		res.json(paintings);
-// 	} catch (err) {
-// 		return next(err);
-// 	}
-// });
 
 export default router;
