@@ -7,6 +7,16 @@ import { getPainting } from "../services/querie.js";
 const router = express.Router();
 const prisma = new PrismaClient();
 
+router.get("/", async (req, res, next) => {
+	let paintings;
+	try {
+		paintings = await prisma.painting.findMany();
+	} catch (err) {
+		return next(err);
+	}
+	res.json(paintings);
+});
+
 router.get("/:id", async (req, res, next) => {
 	let paintings;
 	try {
