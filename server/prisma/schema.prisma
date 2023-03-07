@@ -12,9 +12,9 @@ datasource db {
 
 model Painters {
     id             Int        @id @default(autoincrement())
-    name           String
-    birthDate      DateTime?  @db.Date
-    deathDate      DateTime?  @db.Date
+    name           String     @unique
+    birthDate      String?
+    deathDate      String?
     picture        String?
     picture_credit String?
     wikipedia_link String?
@@ -24,7 +24,7 @@ model Painters {
 model Painting {
     id         Int      @id @default(autoincrement())
     paintingId String   @unique
-    image      String
+    image      String?
     painterId  Int
     painter    Painters @relation(fields: [painterId], references: [id])
 }
