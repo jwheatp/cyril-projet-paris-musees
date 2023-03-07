@@ -47,4 +47,22 @@ router.get("/:id/paintings", async (req, res, next) => {
 	res.json(paintings);
 });
 
+// create route for choose 4 random painters
+
+router.get("/random", async (req, res, next) => {
+	let paintings;
+	try {
+		paintings = await prisma.painters.findMany();
+	} catch (err) {
+		return next(err);
+	}
+	const randomPainters = [];
+	for (let i = 0; i < 4; i++) {
+		const randomPainter =
+			painters[Math.floor(Math.random() * painters.length)];
+		randomPainters.push(randomPainter);
+	}
+	res.json(randomPainters);
+});
+
 export default router;
