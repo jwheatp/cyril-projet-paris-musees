@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
 	res.json(paintings);
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/search/:id", async (req, res, next) => {
 	const painterID = parseInt(req.params.id);
 	let painter;
 	try {
