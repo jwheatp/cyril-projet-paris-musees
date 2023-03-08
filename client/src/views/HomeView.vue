@@ -1,5 +1,9 @@
 <script setup></script>
 
 <template>
-	<h1>Home</h1>
+	<h1>Paris Musée</h1>
+
+	<RouterLink to="/game">
+		<button>Start Game</button>
+	</RouterLink>
 </template>
