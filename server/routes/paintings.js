@@ -25,18 +25,20 @@ router.get("/:id", async (req, res, next) => {
 			process.env.API_AUTH_TOKEN
 		);
 
+		const fieldOeuvreAuteurs = paintings[0].fieldOeuvreAuteurs;
+
 		let PainterName =
-			paintings[0].fieldOeuvreAuteurs[0].entity.fieldAuteurAuteur.entity
-				.name;
+			fieldOeuvreAuteurs[fieldOeuvreAuteurs.length - 1].entity
+				.fieldAuteurAuteur.entity.name;
 		const strPainterName = PainterName.split(", ");
 		PainterName = `${strPainterName[1]} ${strPainterName[0]}`;
 
 		const PainterBirthDate =
-			paintings[0].fieldOeuvreAuteurs[0].entity.fieldAuteurAuteur.entity
-				.fieldPipDateNaissance.sort;
+			fieldOeuvreAuteurs[fieldOeuvreAuteurs.length - 1].entity
+				.fieldAuteurAuteur.entity.fieldPipDateNaissance.sort;
 		const PainterDeathDate =
-			paintings[0].fieldOeuvreAuteurs[0].entity.fieldAuteurAuteur.entity
-				.fieldPipDateDeces.sort;
+			fieldOeuvreAuteurs[fieldOeuvreAuteurs.length - 1].entity
+				.fieldAuteurAuteur.entity.fieldPipDateDeces.sort;
 
 		const PaintingID = paintings[0].entityUuid;
 		const PaintingImage = paintings[0].fieldVisuels[0].entity.vignette;
@@ -54,7 +56,7 @@ router.get("/:id", async (req, res, next) => {
 
 		const painter = await prisma.painters.update({
 			where: {
-				name: "Gustave Courbet",
+				name: PainterObject.name,
 			},
 			data: {
 				birthDate: PainterObject.birthDate,
