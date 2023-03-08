@@ -52,6 +52,12 @@ export default {
 			this.painting = await getRandomPainting(this.randomPainter);
 
 			console.log(this.painting);
+
+			const buttons = document.querySelectorAll("button");
+			buttons.forEach((button) => {
+				button.classList.remove("goodAnswer");
+				button.classList.remove("badAnswer");
+			});
 		},
 		checkAnswer(e) {
 			console.log(e.target.value);
