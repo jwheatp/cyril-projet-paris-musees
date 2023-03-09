@@ -1,3 +1,10 @@
 @import "_variables.scss";
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+	background-image: url("@/assets/background.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+}
