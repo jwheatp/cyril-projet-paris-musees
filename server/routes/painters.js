@@ -61,6 +61,9 @@ router.get("/random", async (req, res, next) => {
 		const randomPainter =
 			painters[Math.floor(Math.random() * painters.length)];
 		randomPainters.push(randomPainter);
+		painters = painters.filter(
+			(painter) => painter.id !== randomPainter.id
+		);
 	}
 	res.json(randomPainters);
 });
