@@ -8,3 +8,10 @@ body {
 	background-size: cover;
 	color: #fff;
 }
+
+@media (min-width: 500px) {
+	body {
+		background-image: none;
+		color: #000;
+	}
+}
