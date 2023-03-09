@@ -23,6 +23,7 @@ import { getRandomPainters, getRandomPainting } from "@/services/painters";
 				<button
 					class="answerBtn"
 					:value="painter.id"
+					:disabled="answered"
 					@click="checkAnswer"
 				>
 					{{ painter.name }}
@@ -74,10 +75,6 @@ export default {
 		resetAnswerButtons() {
 			const buttons = document.querySelectorAll(".answerBtn");
 			buttons.forEach((button) => {
-				button.disabled = false;
-			});
-
-			buttons.forEach((button) => {
 				button.classList.remove("goodAnswer");
 				button.classList.remove("badAnswer");
 			});
@@ -93,10 +90,6 @@ export default {
 		checkAnswer(e) {
 			console.log(e.target.value);
 			this.answered = true;
-			const buttons = document.querySelectorAll(".answerBtn");
-			buttons.forEach((button) => {
-				button.disabled = true;
-			});
 			if (e.target.value == this.painting.painterId) {
 				console.log("Bonne réponse");
 				e.target.classList.add("goodAnswer");
@@ -143,7 +136,6 @@ $badAnswer: #a52853;
 section {
 	height: 100vh;
 
-	h1,
 	h2 {
 		margin: 0;
 	}
@@ -173,15 +165,21 @@ section {
 
 	.infos {
 		width: 100%;
+		height: 50px;
 		@extend .d-flex, .justify-content-around, .align-items-center;
 		.infosMessage {
 			margin: 0;
+			color: #000;
+			font-weight: 500;
+			font-style: italic;
 			&-goodAnswer {
 				color: $goodAnswer;
+				font-style: normal;
 			}
 
 			&-badAnswer {
 				color: $badAnswer;
+				font-style: normal;
 			}
 		}
 		.infosBtn {
