@@ -33,6 +33,10 @@ router.get("/:id", async (req, res, next) => {
 		const strPainterName = PainterName.split(", ");
 		PainterName = `${strPainterName[1]} ${strPainterName[0]}`;
 
+		if (PainterName === "Marie-Louise-Elisabeth Vigée-Lebrun") {
+			PainterName = "Elisabeth Vigée Le Brun";
+		}
+
 		const PainterBirthDate =
 			fieldOeuvreAuteurs[fieldOeuvreAuteurs.length - 1].entity
 				.fieldAuteurAuteur.entity.fieldPipDateNaissance.sort;
