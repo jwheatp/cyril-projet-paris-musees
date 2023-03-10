@@ -14,9 +14,9 @@ import { getRandomPainters, getRandomPainting } from "@/services/painters";
 			<img class="img-fluid" :src="painting.image" alt="" />
 		</div>
 
-		<div class="row">
+		<div class="row mx-2">
 			<div
-				class="col-6 ps-4 pe-4"
+				class="col-6 my-2"
 				v-for="(painter, idx) in painters"
 				:key="idx"
 			>
@@ -147,10 +147,14 @@ section {
 	.answerBtn {
 		background-color: #e6e6e6;
 		border: none;
-		border-radius: 5px;
-		margin: 10px 0;
+		font-family: "Roboto", sans-serif;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 19px;
+		margin: 0;
+		padding: 0;
 		width: 100%;
-		height: 80px;
+		height: 38px;
 	}
 
 	.goodAnswer {
