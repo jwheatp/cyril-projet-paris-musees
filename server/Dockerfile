@@ -13,6 +13,6 @@ COPY . .
 # Init prisma client
 RUN npx prisma generate
 
-EXPOSE 3306
+EXPOSE 8080
 
 CMD [ "npm", "start" ]
