@@ -159,7 +159,6 @@ section {
 
 	.goodAnswer {
 		border: 4px solid $goodAnswer;
-		color: #ffffff;
 	}
 
 	.badAnswer {
