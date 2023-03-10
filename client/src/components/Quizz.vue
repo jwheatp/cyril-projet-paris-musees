@@ -77,6 +77,7 @@ export default {
 			buttons.forEach((button) => {
 				button.classList.remove("goodAnswer");
 				button.classList.remove("badAnswer");
+				button.classList.remove("systemAnswer");
 			});
 		},
 
@@ -103,7 +104,7 @@ export default {
 				const goodAnswer = document.querySelector(
 					`button[value="${this.painting.painterId}"]`
 				);
-				goodAnswer.classList.add("goodAnswer");
+				goodAnswer.classList.add("systemAnswer");
 				this.message = "Mauvaise réponse";
 				const infosMessage = document.querySelector(".infosMessage");
 				infosMessage.classList.add("infosMessage-badAnswer");
@@ -159,6 +160,10 @@ section {
 
 	.goodAnswer {
 		border: 4px solid $goodAnswer;
+	}
+
+	.systemAnswer {
+		border: 4px solid $background1;
 	}
 
 	.badAnswer {
