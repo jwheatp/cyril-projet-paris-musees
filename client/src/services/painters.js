@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/v1/painters/";
+const baseUrl = import.meta.env.VITE_API_BASE_URL + "/v1/painters/";
 
 export async function getRandomPainters() {
 	const response = await axios.get(`${baseUrl}random`);
