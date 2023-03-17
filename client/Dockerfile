@@ -1,3 +1,5 @@
+ARG VITE_API_BASE_URL
+
 FROM node:18
 
 RUN npm install -g http-server
